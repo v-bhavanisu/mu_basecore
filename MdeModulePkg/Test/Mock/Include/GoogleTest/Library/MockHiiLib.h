@@ -1,4 +1,4 @@
-/** @file
+/** @file MockHiiLib.h
   Google Test mocks for HiiLib
 
   Copyright (c) Microsoft Corporation.
