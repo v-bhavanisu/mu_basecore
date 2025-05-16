@@ -20,6 +20,7 @@ SPDX-License-Identifier: BSD-2-Clause-Patent
 **/
 
 #include "Partition.h"
+#include <Library/ReportStatusCodeLib.h>
 
 /**
   Install child handles if the Handle supports GPT partition structure.
@@ -207,6 +208,7 @@ PartitionInstallGptChildHandles (
   HARDDRIVE_DEVICE_PATH        HdDev;
   UINT32                       MediaId;
   EFI_PARTITION_INFO_PROTOCOL  PartitionInfo;
+  BOOLEAN PartitionTableAvailable = TRUE;
 
   ProtectiveMbr = NULL;
   PrimaryHeader = NULL;
@@ -290,6 +292,7 @@ PartitionInstallGptChildHandles (
 
     if (!PartitionValidGptTable (BlockIo, DiskIo, LastBlock, BackupHeader)) {
       DEBUG ((DEBUG_INFO, " Not Valid backup partition table\n"));
+      PartitionTableAvailable = FALSE;
       goto Done;
     } else {
       DEBUG ((DEBUG_INFO, " Valid backup partition table\n"));
@@ -424,6 +427,10 @@ PartitionInstallGptChildHandles (
   DEBUG ((DEBUG_INFO, "Prepare to Free Pool\n"));
 
 Done:
+  if (PartitionTableAvailable == FALSE) {
+    ReportStatusCode (EFI_ERROR_CODE, GptValidStatus);
+  }
+
   if (ProtectiveMbr != NULL) {
     FreePool (ProtectiveMbr);
   }

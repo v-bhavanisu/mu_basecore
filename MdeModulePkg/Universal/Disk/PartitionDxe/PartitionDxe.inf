@@ -58,6 +58,7 @@
   BaseLib
   UefiDriverEntryPoint
   DebugLib
+  ReportStatusCodeLib
 
 
 [Guids]
