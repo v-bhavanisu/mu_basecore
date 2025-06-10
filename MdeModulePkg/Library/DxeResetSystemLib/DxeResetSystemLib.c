@@ -24,6 +24,7 @@ ResetCold (
   VOID
   )
 {
+  DEBUG ((DEBUG_INFO, "%a: Reset status debug 3\n", __FUNCTION__));
   gRT->ResetSystem (EfiResetCold, EFI_SUCCESS, 0, NULL);
 }
 

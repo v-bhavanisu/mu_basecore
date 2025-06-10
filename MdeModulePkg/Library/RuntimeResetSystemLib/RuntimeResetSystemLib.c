@@ -29,6 +29,7 @@ ResetCold (
   VOID
   )
 {
+  DEBUG ((DEBUG_INFO, "%a: Reset status debug 4\n", __FUNCTION__));
   mInternalRT->ResetSystem (EfiResetCold, EFI_SUCCESS, 0, NULL);
 }
 

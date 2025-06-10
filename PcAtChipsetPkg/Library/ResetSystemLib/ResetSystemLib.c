@@ -29,6 +29,7 @@ ResetCold (
   VOID
   )
 {
+  DEBUG ((DEBUG_INFO, "%a: Reset status debug 5\n", __FUNCTION__));
   IoWrite8 ((UINTN)PcdGet64 (PcdResetControlRegister), PcdGet8 (PcdResetControlValueColdReset));
 }
 
