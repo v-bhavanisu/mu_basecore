@@ -9,6 +9,7 @@
 #include <PiDxe.h>
 #include <Library/ResetSystemLib.h>
 #include <Library/UefiRuntimeServicesTableLib.h>
+#include <Library/DebugLib.h>
 
 /**
   This function causes a system-wide reset (cold reset), in which
