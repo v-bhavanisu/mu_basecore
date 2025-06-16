@@ -25,7 +25,7 @@ ResetCold (
   VOID
   )
 {
-  DEBUG ((DEBUG_INFO, "%a: Reset status debug 1 from DxeResetSystemLib\n", __FUNCTION__));
+  DEBUG ((DEBUG_ERROR, "%a: Reset status debug 1 from DxeResetSystemLib\n", __FUNCTION__));
   gRT->ResetSystem (EfiResetCold, EFI_SUCCESS, 0, NULL);
 }
 
